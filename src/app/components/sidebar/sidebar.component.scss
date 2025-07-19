@@ -1,0 +1,69 @@
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #fff; // bela pozadina
+  color: #111;      // crna slova
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  font-family: 'Poppins', sans-serif; // moderan font
+}
+
+.logo {
+  padding: 32px 0 24px 0;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+.logo-text .new {
+  color: #4fc3f7; // svetlija plava
+}
+
+.logo-text .bank {
+  color: #1976d2; // jača plava
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sidebar-nav li:hover,
+.sidebar-nav li b {
+  background: #f0f4f8;
+}
+
+.diamond {
+  color: #1976d2;
+  margin-right: 12px;
+  font-size: 1.1rem;
+}
+
+.logout {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-top: 1px solid #e0e0e0;
+  color: #1976d2;
+}
+
+.logout-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
