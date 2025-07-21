@@ -1,0 +1,54 @@
+.navbar {
+  height: 64px;
+  background: #fff;
+  color: #1976d2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 220px; // širina sidebara
+  padding-right: 32px;
+  border-bottom: 1px solid #e0e0e0;
+  
+  position: relative;
+  z-index: 10;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+}
+
+.navbar-title {
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.navbar-arrow {
+  font-size: 1.5rem;
+  color: #1976d2;
+  vertical-align: middle;
+}
+
+.navbar-section {
+  color: #333;
+  font-weight: 500;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-icon {
+  font-size: 1.7rem;
+  color: #1976d2;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.navbar-icon:hover {
+  color: #1795d0;
+}
