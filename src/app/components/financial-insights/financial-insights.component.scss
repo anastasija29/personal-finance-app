@@ -1,0 +1,82 @@
+.insights-panel {
+  background: #f6e0c9;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 32px;
+  margin-bottom: 32px;
+  margin-left: 247px;   
+  max-width: 900px; 
+  margin-top: 30px;
+}
+
+.account-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.account-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.account-type {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.account-number {
+  font-size: 1rem;
+  color: #555;
+}
+
+.account-right {
+  text-align: right;
+}
+
+.account-balance {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.available-balance {
+  font-size: 0.95rem;
+  color: #49adcc;
+  margin-top: 4px;
+}
+
+.choose-view {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.choose-label {
+  font-weight: 500;
+  color: #1976d2;
+  font-size: 1.1rem;
+}
+
+.choose-icon {
+  font-size: 1.6rem;
+  color: #1976d2;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.choose-icon:hover {
+  color: #1795d0;
+}
+
+.account-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 12px;
+  margin-bottom: -6px;
+}

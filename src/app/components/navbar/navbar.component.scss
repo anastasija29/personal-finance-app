@@ -1,5 +1,5 @@
 .navbar {
-  height: 64px;
+  height: 70px;
   background: #dbe3e8;
   color: #1976d2;
   display: flex;
@@ -10,13 +10,13 @@
   border-bottom: 1px solid #e0e0e0;
   position: relative;
   z-index: 10;
-  border-bottom-left-radius: 10px; 
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  margin-left: 217px;
+  border-bottom-left-radius: 5px; 
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  margin-left: 245px;
   margin-right: -5px;
-  margin-top: -5px;
+  margin-top: -6px;
 }
 
 .navbar-left {
@@ -27,14 +27,8 @@
 }
 
 .navbar-title {
-  font-weight: bold;
-  color: #1976d2;
-}
-
-.navbar-arrow {
-  font-size: 1.5rem;
-  color: #1976d2;
-  vertical-align: middle;
+  font-weight: 550;
+  color: #206fbe;
 }
 
 .navbar-section {
