@@ -1,0 +1,60 @@
+.categorize-panel {
+   background:#dde3eb;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 10px;
+  margin-left:247px;
+  max-width: 820px;
+}
+
+.categorize-btn {
+  background: #3573b1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 2px;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+
+.categorize-btn:hover {
+  background: #145ea8;
+}
+
+.categorize-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.arrow-down {
+  font-size: 2rem;
+  color: #1976d2;
+}
+
+.categorize-text {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.ok-btn, .cancel-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.ok-btn:hover, .cancel-btn:hover {
+  background: #bfcbd6;
+}

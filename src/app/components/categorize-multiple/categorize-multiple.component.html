@@ -1,1 +1,9 @@
-<p>categorize-multiple works!</p>
+<div class="categorize-panel">
+  <button class="categorize-btn" (click)="showActions = !showActions">Categorize Multiple Transactions</button>
+  <div class="categorize-actions" *ngIf="showActions">
+    <span class="material-icons arrow-down">arrow_drop_down</span>
+    <span class="categorize-text">Please select transactions</span>
+    <button class="ok-btn">OK</button>
+    <button class="cancel-btn" (click)="showActions = false">CANCEL</button>
+  </div>
+</div>

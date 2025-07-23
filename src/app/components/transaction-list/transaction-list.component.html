@@ -1,1 +1,24 @@
-<p>transaction-list works!</p>
+<div class="transactions-list">
+  <div class="transaction-card" *ngFor="let t of transactions">
+    <span class="material-icons profile-icon">account_circle</span>
+    <div class="transaction-info">
+      <div class="transaction-name">{{ t.name }}</div>
+      <div class="transaction-date">{{ t.date }}</div>
+    </div>
+    <div class="transaction-amount-block">
+      <div class="transaction-amount">
+        {{ t.amount | currency:'USD':'symbol':'1.2-2' }}
+        <span
+          class="material-icons arrow-icon"
+          [ngClass]="t.type === 'credit' ? 'arrow-green' : 'arrow-red'"
+        >
+          {{ t.type === 'credit' ? 'arrow_upward' : 'arrow_downward' }}
+        </span>
+      </div>
+      <div class="transaction-actions">
+        <button class="action-btn">Add Category</button>
+        <button class="action-btn">Split Transaction</button>
+      </div>
+    </div>
+  </div>
+</div>
