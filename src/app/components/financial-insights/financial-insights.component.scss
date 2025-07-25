@@ -8,10 +8,10 @@
   border-radius: 18px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.07);
   padding: 46px;
-  margin-left: 247px;   
+  margin-left: 270px;   
   max-width: 900px; 
   margin-top: 30px;
-  margin-right: 280px;
+  margin-right: 370px;
   z-index: 1;
 }
 
@@ -71,7 +71,7 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   padding: 22px;
   max-width:798px;
-  margin-left: 247px;
+  margin-left: 280px;
   margin-top: 30px;
   margin-bottom: 5px;
 }
@@ -103,13 +103,12 @@
   position: absolute;
   display: flex;
   top: 40px;
-  right: 40px;
-  margin-right: -10px;
-  min-width: 210px;
+  left:1185px;
   flex-direction: column;
   gap: 6px;
   margin-top: 65px;
   z-index: 2;
+   min-width: 295px;
 }
 
 .side-btn {

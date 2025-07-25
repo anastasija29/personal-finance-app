@@ -1,0 +1,41 @@
+<div class="filters-panel">
+  <div class="filters-title">Filters</div>
+  
+  <div class="filter-group">
+    <label for="from-date">From:</label>
+    <input id="from-date" type="date" class="filter-input" />
+  </div>
+  
+  <div class="filter-group">
+    <label for="to-date">To:</label>
+    <input id="to-date" type="date" class="filter-input" />
+  </div>
+  
+  <div class="filter-group">
+    <label for="transaction-type">Transaction type:</label>
+    <select id="transaction-type" class="filter-select">
+      <option value="">All types</option>
+      <option value="expense">Expense</option>
+      <option value="payment">Payment</option>
+      <option value="deposit">Deposit</option>
+    </select>
+  </div>
+  
+  <div class="filter-group">
+    <label for="account-filter">Filter by account:</label>
+    <select id="account-filter" class="filter-select">
+      <option value="">All accounts</option>
+      <option value="current">Current Account</option>
+      <option value="savings">Savings Account</option>
+      <option value="card">Card Account</option>
+    </select>
+  </div>
+  
+  <div class="filter-group">
+    <label for="beneficiary-filter">Beneficiary:</label>
+    <input id="beneficiary-filter" type="text" class="filter-input" placeholder="Enter beneficiary" />
+  </div>
+  
+  <button class="filter-btn">Filter transactions</button>
+  <button class="clear-btn">Clear selections</button>
+</div>

@@ -6,6 +6,7 @@ import { FinancialInsightsComponent } from './components/financial-insights/fina
 import { CategorizeMultipleComponent } from './components/categorize-multiple/categorize-multiple.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
+
 @Component({
   selector: 'app-root',
   imports: [SidebarComponent, NavbarComponent, FinancialInsightsComponent, CategorizeMultipleComponent, TransactionListComponent],
