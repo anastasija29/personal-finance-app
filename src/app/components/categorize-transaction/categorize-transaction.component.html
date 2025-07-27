@@ -1,1 +1,22 @@
-<p>categorize-transaction works!</p>
+<div class="popup-overlay">
+  <div class="popup-content">
+    <h3>Categorize Transaction</h3>
+    
+    <label for="category-select">Category:</label>
+    <select id="category-select" [(ngModel)]="selectedCategory" required>
+      <option value="" disabled>Select category</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+    </select>
+    
+    <label for="subcategory-select">Subcategory:</label>
+    <select id="subcategory-select" [(ngModel)]="selectedSubcategory" [disabled]="!selectedCategory">
+      <option value="" disabled>Select subcategory</option>
+      <option *ngFor="let sub of subcategoriesMap[selectedCategory] || []" [value]="sub">{{sub}}</option>
+    </select>
+    
+    <div class="popup-actions">
+      <button (click)="onApply()" [disabled]="!selectedCategory">Apply</button>
+      <button (click)="close.emit()">Cancel</button>
+    </div>
+  </div>
+</div>

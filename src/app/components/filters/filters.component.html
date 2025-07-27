@@ -3,21 +3,36 @@
   
   <div class="filter-group">
     <label for="from-date">From:</label>
-    <input id="from-date" type="date" class="filter-input" />
+   <input id="from-date" type="date" class="filter-input" [(ngModel)]="fromDate" />
   </div>
   
   <div class="filter-group">
     <label for="to-date">To:</label>
-    <input id="to-date" type="date" class="filter-input" />
+    <input id="to-date" type="date" class="filter-input" [(ngModel)]="toDate" />
   </div>
   
   <div class="filter-group">
     <label for="transaction-type">Transaction type:</label>
-    <select id="transaction-type" class="filter-select">
+    <select id="transaction-type" class="filter-select" [(ngModel)]="selectedType">
       <option value="">All types</option>
       <option value="expense">Expense</option>
       <option value="payment">Payment</option>
       <option value="deposit">Deposit</option>
+      <option value="fee">Fee</option>
+      <option value="transfer">Transfer</option>
+      <option value="refund">Refund</option>
+      <option value="interest">Interest</option>
+      <option value="charge">Charge</option>
+      <option value="withdrawal">Withdrawal</option>
+      <option value="deposit">Deposit</option>
+      <option value="bill">Bill</option>
+      <option value="subscription">Subscription</option>
+      <option value="loan">Loan</option>
+      <option value="investment">Investment</option>
+      <option value="dividend">Dividend</option>
+      <option value="salary">Salary</option>
+      <option value="bonus">Bonus</option>
+      <option value="gift">Gift</option>
     </select>
   </div>
   
@@ -36,6 +51,6 @@
     <input id="beneficiary-filter" type="text" class="filter-input" placeholder="Enter beneficiary" />
   </div>
   
-  <button class="filter-btn">Filter transactions</button>
-  <button class="clear-btn">Clear selections</button>
+  <button class="filter-btn" (click)="onFilterTransactions()">Filter transactions</button>
+  <button class="clear-btn" (click)="clearFilters()">Clear transactions</button>
 </div>

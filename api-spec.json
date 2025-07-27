@@ -1,0 +1,193 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Personal Finance API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/transactions": {
+      "get": {
+        "summary": "Get all transactions",
+        "responses": {
+          "200": {
+            "description": "List of transactions",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "custom": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "beneficiary": "Ana Petrović",
+                        "date": "2025-07-23",
+                        "direction": "credit",
+                        "amount": 120.50,
+                        "currency": "USD",
+                        "kind": "expense",
+                        "split": false,
+                        "category": "",
+                        "subcategory": ""
+                      },
+                      {
+                        "id": 2,
+                        "beneficiary": "Marko Jovanović",
+                        "date": "2025-07-22",
+                        "direction": "debit",
+                        "amount": -45.00,
+                        "currency": "USD",
+                        "kind": "payment",
+                        "split": true,
+                        "category": "",
+                        "subcategory": ""
+                      },
+                      {
+                        "id": 3,
+                        "beneficiary": "Jelena Nikolić",
+                        "date": "2025-07-21",
+                        "direction": "credit",
+                        "amount": 2000.00,
+                        "currency": "EUR",
+                        "kind": "sal",
+                        "split": false,
+                        "category": "",
+                        "subcategory": ""
+                      },
+                      {
+                        "id": 4,
+                        "beneficiary": "Petar Petrović",
+                        "date": "2025-07-20",
+                        "direction": "debit",
+                        "amount": -15.99,
+                        "currency": "USD",
+                        "kind": "fee",
+                        "split": false,
+                        "category": "",
+                        "subcategory": ""
+                      },
+                      {
+                        "id": 5,
+                        "beneficiary": "Ivana Simić",
+                        "date": "2025-07-19",
+                        "direction": "credit",
+                        "amount": 500.00,
+                        "currency": "RSD",
+                        "kind": "dept",
+                        "split": false,
+                        "category": "",
+                        "subcategory": ""
+                      },
+                      {
+                        "id": 6,
+                        "beneficiary": "Milan Kovačević",
+                        "date": "2025-07-18",
+                        "direction": "debit",
+                        "amount": -100.00,
+                        "currency": "USD",
+                        "kind": "wdw",
+                        "split": true,
+                        "category": "",
+                        "subcategory": ""
+                      },
+                      {
+                        "id": 7,
+                        "beneficiary": "Sara Lukić",
+                        "date": "2025-07-17",
+                        "direction": "credit",
+                        "amount": 75.00,
+                        "currency": "EUR",
+                        "kind": "expense",
+                        "split": false,
+                        "category": "",
+                        "subcategory": ""
+                      },
+                      {
+                        "id": 8,
+                        "beneficiary": "Nikola Ilić",
+                        "date": "2025-07-16",
+                        "direction": "debit",
+                        "amount": -30.00,
+                        "currency": "USD",
+                        "kind": "payment",
+                        "split": false,
+                        "category": "",
+                        "subcategory": ""
+                      },
+                      {
+                        "id": 9,
+                        "beneficiary": "Tamara Savić",
+                        "date": "2025-07-15",
+                        "direction": "credit",
+                        "amount": 150.00,
+                        "currency": "RSD",
+                        "kind": "dept",
+                        "split": false,
+                        "category": "",
+                        "subcategory": ""
+                      },
+                      {
+                        "id": 10,
+                        "beneficiary": "Stefan Jovanović",
+                        "date": "2025-07-14",
+                        "direction": "debit",
+                        "amount": -60.00,
+                        "currency": "EUR",
+                        "kind": "wdw",
+                        "split": true,
+                        "category": "",
+                        "subcategory": ""
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{id}": {
+      "patch": {
+        "summary": "Update transaction category",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category": { "type": "string" },
+                  "subcategory": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction updated",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "updated": {
+                    "value": {
+                      "id": 1,
+                      "category": "Shopping",
+                      "subcategory": "Clothing"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

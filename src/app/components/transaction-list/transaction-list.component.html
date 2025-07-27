@@ -1,24 +1,44 @@
 <div class="transactions-list">
-  <div class="transaction-card" *ngFor="let t of transactions">
+  <div class="transaction-card" *ngFor="let t of filteredSortedTransactions">
+    <!--<div class="transaction-id">#{{ t.id }}</div>-->
+    <input type="checkbox" class="transaction-checkbox" />
     <span class="material-icons profile-icon">account_circle</span>
     <div class="transaction-info">
-      <div class="transaction-name">{{ t.name }}</div>
-      <div class="transaction-date">{{ t.date }}</div>
+      <div class="transaction-name">{{ t.beneficiary }}</div>
+      <div class="transaction-date">{{ t.date | date:'yyyy-MM-dd' }}</div>
     </div>
+    
+    <!--<div class="transaction-kind">{{ t.kind }}</div>-->
     <div class="transaction-amount-block">
       <div class="transaction-amount">
-        {{ t.amount | currency:'USD':'symbol':'1.2-2' }}
+        {{ t.amount }} {{ t.currency }}
         <span
           class="material-icons arrow-icon"
-          [ngClass]="t.type === 'credit' ? 'arrow-green' : 'arrow-red'"
+          [ngClass]="t.direction === 'credit' ? 'arrow-green' : 'arrow-red'"
         >
-          {{ t.type === 'credit' ? 'arrow_upward' : 'arrow_downward' }}
+          {{ t.direction === 'credit' ? 'arrow_upward' : 'arrow_downward' }}
         </span>
       </div>
-      <div class="transaction-actions">
-        <button class="action-btn">Add Category</button>
-        <button class="action-btn">Split Transaction</button>
-      </div>
+ <div class="transaction-actions">
+ <ng-container *ngIf="!t.category || t.category === ''; else showCategory">
+    <button class="action-btn" (click)="openCategoryPopup(t)">
+      Add Category
+    </button>
+  </ng-container>
+  <ng-template #showCategory>
+    <span class="category-label">
+      {{ t.category }}<span *ngIf="t.subcategory"> / {{ t.subcategory }}</span>
+    </span>
+  </ng-template>
+  <button class="action-btn">Split Transaction</button>
+  </div>
     </div>
   </div>
 </div>
+
+ <app-categorize-transaction
+    *ngIf="showCategoryPopup"
+    [transaction]="selectedTransaction"
+    (close)="closeCategoryPopup()"
+    (applyCategory)="onApplyCategory($event)">
+  </app-categorize-transaction>

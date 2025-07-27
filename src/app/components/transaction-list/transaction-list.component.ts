@@ -1,43 +1,68 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TransactionService } from '../../services/transaction.service';
+import { CategorizeTransactionComponent } from '../categorize-transaction/categorize-transaction.component';
 
 @Component({
   selector: 'app-transaction-list',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, CategorizeTransactionComponent],
   templateUrl: './transaction-list.component.html',
-  styleUrl: './transaction-list.component.scss'
+  styleUrls: ['./transaction-list.component.scss']
 })
-export class TransactionListComponent {
-  transactions = [
-    {
-      name: 'Ana Petrović',
-      date: '2025-07-23',
-      amount: 120.50,
-      type: 'credit',
-    },
-    {
-      name: 'Marko Jovanović',
-      date: '2025-07-22',
-      amount: -45.00,
-      type: 'debit',
-    },
-    {
-      name: 'Ivana Ilić',
-      date: '2025-07-21',
-      amount: 300.00,
-      type: 'credit',
-    },
-    {
-      name: 'Petar Nikolić',
-      date: '2025-07-20',
-      amount: -80.00,
-      type: 'debit',
-    },
-    {
-      name: 'Jelena Simić',
-      date: '2025-07-19',
-      amount: 50.00,
-      type: 'credit',
-    }
-  ];
+export class TransactionListComponent implements OnInit {
+  transactions: any[] = [];
+  @Input() filters: any = {};
+
+  showCategoryPopup = false;
+  selectedTransaction: any = null;
+
+  constructor(private transactionService: TransactionService) {}
+
+  ngOnInit() {
+    this.transactionService.getTransactions().subscribe(data => {
+      this.transactions = data;
+    });
+  }
+
+  get filteredSortedTransactions() {
+    return this.transactions
+      .filter(t => {
+        const typeMatch = !this.filters.type || t.kind === this.filters.type;
+        const fromMatch = !this.filters.fromDate || t.date >= this.filters.fromDate;
+        const toMatch = !this.filters.toDate || t.date <= this.filters.toDate;
+        const beneficiaryMatch = !this.filters.beneficiary || t.beneficiary?.toLowerCase().includes(this.filters.beneficiary.toLowerCase());
+        return typeMatch && fromMatch && toMatch && beneficiaryMatch;
+      })
+      .sort((a, b) => {
+        if (a.date !== b.date) {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        }
+        return a.category.localeCompare(b.category);
+      });
+  }
+
+  openCategoryPopup(transaction: any) {
+    this.selectedTransaction = transaction;
+    this.showCategoryPopup = true;
+  }
+
+  closeCategoryPopup() {
+    this.showCategoryPopup = false;
+    this.selectedTransaction = null;
+  }
+
+  onApplyCategory({category, subcategory}: {category: string, subcategory: string}) {
+  const transactionId = this.selectedTransaction?.id;
+  this.transactionService.updateTransactionCategory(transactionId, category, subcategory)
+    .subscribe(() => {
+      const tx = this.transactions.find(t => t.id === transactionId);
+      if (tx) {
+        tx.category = category;
+        tx.subcategory = subcategory;
+      }
+      this.showCategoryPopup = false;
+      this.selectedTransaction = null;
+    });
+}
 }
