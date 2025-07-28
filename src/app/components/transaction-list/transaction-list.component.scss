@@ -99,3 +99,48 @@
   letter-spacing: 0.5px;
 }
 
+.split-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.split-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: -25px;
+  max-width: 330px;
+}
+
+.split-btn {
+  align-self: flex-start;
+  height: 24px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 18px 0 0 0;
+}
+
+.pagination-controls button {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pagination-controls button:disabled {
+  background: #f5f5f5;
+  color: #aaa;
+  cursor: default;
+}

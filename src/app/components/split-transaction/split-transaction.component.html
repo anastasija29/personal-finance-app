@@ -14,7 +14,7 @@
           <option *ngFor="let sub of subcategoriesMap[split.category] || []" [value]="sub">{{sub}}</option>
         </select>
         <label>Amount:</label>
-        <input type="number" [(ngModel)]="split.amount" name="amount{{i}}" required min="0" />
+        <input type="number" [(ngModel)]="split.amount" name="amount{{i}}" required min="0" placeholder="Enter amount" />
         <button type="button" (click)="removeSplit(i)" *ngIf="splits.length > 2">Remove</button>
       </div>
     <button type="button" class="add-split-btn" (click)="addSplit()">Add Split</button>

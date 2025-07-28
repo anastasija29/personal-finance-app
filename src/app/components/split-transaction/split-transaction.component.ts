@@ -46,12 +46,12 @@ subcategoriesMap: { [key: string]: string[] } = {
 };
 
   splits = [
-    { category: '', subcategory: '', amount: 0 },
-    { category: '', subcategory: '', amount: 0 }
+    { category: '', subcategory: '', amount: null },
+    { category: '', subcategory: '', amount: null }
   ];
 
   addSplit() {
-    this.splits.push({ category: '', subcategory: '', amount: 0 });
+    this.splits.push({ category: '', subcategory: '', amount: null });
   }
 
   removeSplit(index: number) {

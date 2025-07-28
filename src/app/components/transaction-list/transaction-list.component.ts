@@ -128,10 +128,36 @@ loadTransactions() {
 }
 
 onApplySplit(splits: any[]) {
- 
-  this.transactionService.splitTransaction(this.splitTransaction.id, splits).subscribe(() => {
+  if (!this.splitTransaction) {
+    return;
+  }
+  const splitId = this.splitTransaction.id;
+  this.transactionService.splitTransaction(splitId, splits).subscribe(() => {
+    const tx = this.transactions.find(t => t.id === splitId);
+    if (tx) {
+      tx.splits = splits;
+      tx.split = true;
+      tx.category = null;
+      tx.subcategory = null;
+    }
     this.closeSplitPopup();
-    this.loadTransactions();
   });
+}
+pageSize = 5; 
+currentPage = 1;
+
+get paginatedTransactions() {
+  const start = (this.currentPage - 1) * this.pageSize;
+  return this.filteredSortedTransactions.slice(start, start + this.pageSize);
+}
+
+get totalPages() {
+  return Math.ceil(this.filteredSortedTransactions.length / this.pageSize);
+}
+
+goToPage(page: number) {
+  if (page >= 1 && page <= this.totalPages) {
+    this.currentPage = page;
+  }
 }
 }

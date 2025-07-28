@@ -5,29 +5,41 @@
 </app-categorize-multiple>
 
 <div class="transactions-list">
-  <div class="transaction-card" *ngFor="let t of filteredSortedTransactions">
-    <input
-      type="checkbox"
-      class="transaction-checkbox"
-      *ngIf="multiSelectMode"
-      [(ngModel)]="t.selected"
-    />
-    <span class="material-icons profile-icon">account_circle</span>
-    <div class="transaction-info">
-      <div class="transaction-name">{{ t.beneficiary }}</div>
-      <div class="transaction-date">{{ t.date | date:'yyyy-MM-dd' }}</div>
+  <div class="transaction-card" *ngFor="let t of paginatedTransactions">
+  <input
+    type="checkbox"
+    class="transaction-checkbox"
+    *ngIf="multiSelectMode"
+    [(ngModel)]="t.selected"
+  />
+  <span class="material-icons profile-icon">account_circle</span>
+  <div class="transaction-info">
+    <div class="transaction-name">{{ t.beneficiary }}</div>
+    <div class="transaction-date">{{ t.date | date:'yyyy-MM-dd' }}</div>
+  </div>
+  <div class="transaction-amount-block">
+    <div class="transaction-amount">
+      {{ t.amount }} {{ t.currency }}
+      <span
+        class="material-icons arrow-icon"
+        [ngClass]="t.direction === 'credit' ? 'arrow-green' : 'arrow-red'"
+      >
+        {{ t.direction === 'credit' ? 'arrow_upward' : 'arrow_downward' }}
+      </span>
     </div>
-    <div class="transaction-amount-block">
-      <div class="transaction-amount">
-        {{ t.amount }} {{ t.currency }}
-        <span
-          class="material-icons arrow-icon"
-          [ngClass]="t.direction === 'credit' ? 'arrow-green' : 'arrow-red'"
-        >
-          {{ t.direction === 'credit' ? 'arrow_upward' : 'arrow_downward' }}
-        </span>
-      </div>
-      <div class="transaction-actions">
+    <div class="transaction-actions split-actions">
+      <ng-container *ngIf="t.split && t.splits?.length; else notSplit">
+        <div class="split-list">
+          <div *ngFor="let s of t.splits" class="split-item">
+            <span class="category-label split-label">
+              {{ s.category }}<span *ngIf="s.subcategory"> / {{ s.subcategory }}</span>
+              <span class="split-amount">({{ s.amount }} {{ t.currency }})</span>
+            </span>
+          </div>
+        </div>
+        <button class="action-btn split-btn" (click)="openSplitPopup(t)">Split Transaction</button>
+      </ng-container>
+      <ng-template #notSplit>
         <ng-container *ngIf="!t.category || t.category === ''; else showCategory">
           <button class="action-btn" (click)="openCategoryPopup(t)">
             Add Category
@@ -39,9 +51,17 @@
           </span>
         </ng-template>
         <button class="action-btn" (click)="openSplitPopup(t)">Split Transaction</button>
-      </div>
+      </ng-template>
     </div>
   </div>
+</div>
+</div>
+
+<!-- PAGINATION CONTROLS -->
+<div class="pagination-controls">
+  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Prev</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
 </div>
 
 <app-categorize-transaction
