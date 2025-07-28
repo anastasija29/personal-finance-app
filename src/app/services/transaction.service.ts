@@ -14,5 +14,8 @@ export class TransactionService {
   return this.http.patch(`http://localhost:4010/transactions/${id}`, { category, subcategory });
 }
 
+splitTransaction(id: string, splits: any[]) {
+  return this.http.post(`http://localhost:4010/transactions/${id}/split`, { splits });
+}
   constructor(private http: HttpClient) {}
 }

@@ -36,93 +36,93 @@
                         "amount": -45.00,
                         "currency": "USD",
                         "kind": "payment",
-                        "split": true,
+                        "split": false,
                         "category": "",
                         "subcategory": ""
                       },
                       {
                         "id": 3,
-                        "beneficiary": "Jelena Nikolić",
+                        "beneficiary": "Ivana Nikolić",
                         "date": "2025-07-21",
                         "direction": "credit",
-                        "amount": 2000.00,
-                        "currency": "EUR",
-                        "kind": "sal",
+                        "amount": 250.00,
+                        "currency": "USD",
+                        "kind": "income",
                         "split": false,
-                        "category": "",
-                        "subcategory": ""
+                        "category": "Income",
+                        "subcategory": "Paycheck"
                       },
                       {
                         "id": 4,
                         "beneficiary": "Petar Petrović",
                         "date": "2025-07-20",
                         "direction": "debit",
-                        "amount": -15.99,
+                        "amount": -80.00,
                         "currency": "USD",
-                        "kind": "fee",
+                        "kind": "expense",
                         "split": false,
-                        "category": "",
-                        "subcategory": ""
+                        "category": "Food & Dining",
+                        "subcategory": "Restaurants"
                       },
                       {
                         "id": 5,
-                        "beneficiary": "Ivana Simić",
+                        "beneficiary": "Jelena Savić",
                         "date": "2025-07-19",
                         "direction": "credit",
-                        "amount": 500.00,
-                        "currency": "RSD",
-                        "kind": "dept",
+                        "amount": 60.00,
+                        "currency": "USD",
+                        "kind": "income",
                         "split": false,
-                        "category": "",
-                        "subcategory": ""
+                        "category": "Income",
+                        "subcategory": "Bonus"
                       },
                       {
                         "id": 6,
-                        "beneficiary": "Milan Kovačević",
+                        "beneficiary": "Milan Stojanović",
                         "date": "2025-07-18",
                         "direction": "debit",
-                        "amount": -100.00,
+                        "amount": -30.00,
                         "currency": "USD",
-                        "kind": "wdw",
-                        "split": true,
-                        "category": "",
-                        "subcategory": ""
+                        "kind": "expense",
+                        "split": false,
+                        "category": "Entertainment",
+                        "subcategory": "Movies & DVDs"
                       },
                       {
                         "id": 7,
-                        "beneficiary": "Sara Lukić",
+                        "beneficiary": "Tamara Mijailović",
                         "date": "2025-07-17",
                         "direction": "credit",
-                        "amount": 75.00,
-                        "currency": "EUR",
-                        "kind": "expense",
+                        "amount": 150.00,
+                        "currency": "USD",
+                        "kind": "income",
                         "split": false,
-                        "category": "",
-                        "subcategory": ""
+                        "category": "Income",
+                        "subcategory": "Interest Income"
                       },
                       {
                         "id": 8,
                         "beneficiary": "Nikola Ilić",
                         "date": "2025-07-16",
                         "direction": "debit",
-                        "amount": -30.00,
+                        "amount": -55.00,
                         "currency": "USD",
-                        "kind": "payment",
+                        "kind": "expense",
                         "split": false,
-                        "category": "",
-                        "subcategory": ""
+                        "category": "Shopping",
+                        "subcategory": "Clothing"
                       },
                       {
                         "id": 9,
-                        "beneficiary": "Tamara Savić",
+                        "beneficiary": "Milica Jovanović",
                         "date": "2025-07-15",
                         "direction": "credit",
-                        "amount": 150.00,
-                        "currency": "RSD",
-                        "kind": "dept",
+                        "amount": 200.00,
+                        "currency": "USD",
+                        "kind": "income",
                         "split": false,
-                        "category": "",
-                        "subcategory": ""
+                        "category": "Income",
+                        "subcategory": "Rental Income"
                       },
                       {
                         "id": 10,
@@ -130,11 +130,71 @@
                         "date": "2025-07-14",
                         "direction": "debit",
                         "amount": -60.00,
-                        "currency": "EUR",
-                        "kind": "wdw",
-                        "split": true,
-                        "category": "",
-                        "subcategory": ""
+                        "currency": "USD",
+                        "kind": "expense",
+                        "split": false,
+                        "category": "Health & Fitness",
+                        "subcategory": "Gym"
+                      },
+                      {
+                        "id": 11,
+                        "beneficiary": "Sara Petrović",
+                        "date": "2025-07-13",
+                        "direction": "credit",
+                        "amount": 90.00,
+                        "currency": "USD",
+                        "kind": "income",
+                        "split": false,
+                        "category": "Income",
+                        "subcategory": "Bonus"
+                      },
+                      {
+                        "id": 12,
+                        "beneficiary": "Vladimir Nikolić",
+                        "date": "2025-07-12",
+                        "direction": "debit",
+                        "amount": -25.00,
+                        "currency": "USD",
+                        "kind": "expense",
+                        "split": false,
+                        "category": "Bills & Utilities",
+                        "subcategory": "Internet"
+                      },
+                      {
+                        "id": 13,
+                        "beneficiary": "Katarina Savić",
+                        "date": "2025-07-11",
+                        "direction": "credit",
+                        "amount": 110.00,
+                        "currency": "USD",
+                        "kind": "income",
+                        "split": false,
+                        "category": "Income",
+                        "subcategory": "Paycheck"
+                      },
+                      {
+                        "id": 14,
+                        "beneficiary": "Aleksandar Stojanović",
+                        "date": "2025-07-10",
+                        "direction": "debit",
+                        "amount": -40.00,
+                        "currency": "USD",
+                        "kind": "expense",
+                        "split": false,
+                        "category": "Auto & Transport",
+                        "subcategory": "Gas & Fuel"
+                      },
+                      {
+                        "id": 15,
+                        "beneficiary": "Ivana Petrović",
+                        "date": "2025-07-09",
+                        "direction": "debit",
+                        "amount": -70.00,
+                        "currency": "USD",
+                        "kind": "expense",
+                        "split": false,
+                        "category": "Shopping",
+                        "subcategory": "Electronics & Software"
                       }
                     ]
                   }
@@ -181,6 +241,80 @@
                       "category": "Shopping",
                       "subcategory": "Clothing"
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{id}/split": {
+      "post": {
+        "summary": "Split transaction into multiple transactions",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "splits": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "category": { "type": "string" },
+                        "subcategory": { "type": "string" },
+                        "amount": { "type": "number" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Split transactions created",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "split": {
+                    "value": [
+                      {
+                        "id": 101,
+                        "beneficiary": "Ana Petrović",
+                        "date": "2025-07-23",
+                        "direction": "credit",
+                        "amount": 100,
+                        "currency": "USD",
+                        "kind": "expense",
+                        "split": true,
+                        "category": "Food & Dining",
+                        "subcategory": "Groceries"
+                      },
+                      {
+                        "id": 102,
+                        "beneficiary": "Ana Petrović",
+                        "date": "2025-07-23",
+                        "direction": "credit",
+                        "amount": 20.5,
+                        "currency": "USD",
+                        "kind": "expense",
+                        "split": true,
+                        "category": "Shopping",
+                        "subcategory": "Clothing"
+                      }
+                    ]
                   }
                 }
               }

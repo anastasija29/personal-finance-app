@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-categorize-transaction',
   imports: [FormsModule, CommonModule],
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CategorizeTransactionComponent {
   @Input() transaction: any;
+  @Input() transactions: any[] = [];
   @Output() close = new EventEmitter<void>();
   @Output() applyCategory = new EventEmitter<{category: string, subcategory: string}>();
 

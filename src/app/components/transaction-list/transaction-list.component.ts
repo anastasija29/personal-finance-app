@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TransactionService } from '../../services/transaction.service';
 import { CategorizeTransactionComponent } from '../categorize-transaction/categorize-transaction.component';
+import { CategorizeMultipleComponent } from '../categorize-multiple/categorize-multiple.component';
+import { SplitTransactionComponent } from '../split-transaction/split-transaction.component';
 
 @Component({
   selector: 'app-transaction-list',
-  imports: [CommonModule, FormsModule, CategorizeTransactionComponent],
+  imports: [CommonModule, FormsModule, CategorizeTransactionComponent, CategorizeMultipleComponent, SplitTransactionComponent],
   templateUrl: './transaction-list.component.html',
   styleUrls: ['./transaction-list.component.scss']
 })
@@ -64,5 +66,72 @@ export class TransactionListComponent implements OnInit {
       this.showCategoryPopup = false;
       this.selectedTransaction = null;
     });
+}
+multiSelectMode = false;
+showMultiCategoryPopup = false;
+
+get selectedTransactions() {
+  return this.transactions.filter(t => t.selected);
+}
+
+startMultiSelect() {
+  this.multiSelectMode = true;
+  this.transactions.forEach(t => t.selected = false);
+}
+
+cancelMultiSelect() {
+  this.multiSelectMode = false;
+  this.transactions.forEach(t => t.selected = false);
+}
+
+proceedCategorizeSelected() {
+  if (this.selectedTransactions.length > 0) {
+    this.showMultiCategoryPopup = true;
+  }
+}
+
+closeMultiCategoryPopup() {
+  this.showMultiCategoryPopup = false;
+  this.multiSelectMode = false;
+  this.transactions.forEach(t => t.selected = false);
+}
+
+onApplyCategoryMultiple({category, subcategory}: {category: string, subcategory: string}) {
+  this.selectedTransactions.forEach(t => {
+    t.category = category;
+    t.subcategory = subcategory;
+    t.selected = false;
+  
+    this.transactionService.updateTransactionCategory(t.id, category, subcategory).subscribe();
+  });
+  this.showMultiCategoryPopup = false;
+  this.multiSelectMode = false;
+}
+
+splitTransactionPopup = false;
+splitTransaction: any = null;
+
+openSplitPopup(transaction: any) {
+  this.splitTransaction = transaction;
+  this.splitTransactionPopup = true;
+}
+
+closeSplitPopup() {
+  this.splitTransactionPopup = false;
+  this.splitTransaction = null;
+}
+
+loadTransactions() {
+  this.transactionService.getTransactions().subscribe(data => {
+    this.transactions = data;
+  });
+}
+
+onApplySplit(splits: any[]) {
+ 
+  this.transactionService.splitTransaction(this.splitTransaction.id, splits).subscribe(() => {
+    this.closeSplitPopup();
+    this.loadTransactions();
+  });
 }
 }

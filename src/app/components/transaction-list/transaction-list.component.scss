@@ -86,3 +86,16 @@
 .action-btn:hover {
   background: #bfcbd6;
 }
+
+.category-label {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  margin-right: 8px;
+  box-shadow: 0 1px 4px rgba(25, 118, 210, 0.08);
+  letter-spacing: 0.5px;
+}
+

@@ -1,14 +1,22 @@
+<app-categorize-multiple
+  (startMultiSelect)="startMultiSelect()"
+  (proceedCategorizeEvent)="proceedCategorizeSelected()"
+  (cancelCategorizeEvent)="cancelMultiSelect()">
+</app-categorize-multiple>
+
 <div class="transactions-list">
   <div class="transaction-card" *ngFor="let t of filteredSortedTransactions">
-    <!--<div class="transaction-id">#{{ t.id }}</div>-->
-    <input type="checkbox" class="transaction-checkbox" />
+    <input
+      type="checkbox"
+      class="transaction-checkbox"
+      *ngIf="multiSelectMode"
+      [(ngModel)]="t.selected"
+    />
     <span class="material-icons profile-icon">account_circle</span>
     <div class="transaction-info">
       <div class="transaction-name">{{ t.beneficiary }}</div>
       <div class="transaction-date">{{ t.date | date:'yyyy-MM-dd' }}</div>
     </div>
-    
-    <!--<div class="transaction-kind">{{ t.kind }}</div>-->
     <div class="transaction-amount-block">
       <div class="transaction-amount">
         {{ t.amount }} {{ t.currency }}
@@ -19,26 +27,40 @@
           {{ t.direction === 'credit' ? 'arrow_upward' : 'arrow_downward' }}
         </span>
       </div>
- <div class="transaction-actions">
- <ng-container *ngIf="!t.category || t.category === ''; else showCategory">
-    <button class="action-btn" (click)="openCategoryPopup(t)">
-      Add Category
-    </button>
-  </ng-container>
-  <ng-template #showCategory>
-    <span class="category-label">
-      {{ t.category }}<span *ngIf="t.subcategory"> / {{ t.subcategory }}</span>
-    </span>
-  </ng-template>
-  <button class="action-btn">Split Transaction</button>
-  </div>
+      <div class="transaction-actions">
+        <ng-container *ngIf="!t.category || t.category === ''; else showCategory">
+          <button class="action-btn" (click)="openCategoryPopup(t)">
+            Add Category
+          </button>
+        </ng-container>
+        <ng-template #showCategory>
+          <span class="category-label">
+            {{ t.category }}<span *ngIf="t.subcategory"> / {{ t.subcategory }}</span>
+          </span>
+        </ng-template>
+        <button class="action-btn" (click)="openSplitPopup(t)">Split Transaction</button>
+      </div>
     </div>
   </div>
 </div>
 
- <app-categorize-transaction
-    *ngIf="showCategoryPopup"
-    [transaction]="selectedTransaction"
-    (close)="closeCategoryPopup()"
-    (applyCategory)="onApplyCategory($event)">
-  </app-categorize-transaction>
+<app-categorize-transaction
+  *ngIf="showCategoryPopup"
+  [transaction]="selectedTransaction"
+  (close)="closeCategoryPopup()"
+  (applyCategory)="onApplyCategory($event)">
+</app-categorize-transaction>
+
+<app-categorize-transaction
+  *ngIf="showMultiCategoryPopup"
+  [transactions]="selectedTransactions"
+  (applyCategory)="onApplyCategoryMultiple($event)"
+  (close)="closeMultiCategoryPopup()">
+</app-categorize-transaction>
+
+<app-split-transaction
+  *ngIf="splitTransactionPopup"
+  [transaction]="splitTransaction"
+  (applySplit)="onApplySplit($event)"
+  (close)="closeSplitPopup()">
+</app-split-transaction>

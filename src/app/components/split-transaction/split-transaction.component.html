@@ -1,1 +1,30 @@
-<p>split-transaction works!</p>
+<div class="popup-overlay">
+  <div class="popup-content">
+    <h3>Split Transaction</h3>
+    <form (ngSubmit)="onApply()">
+      <div *ngFor="let split of splits; let i = index" class="split-row">
+        <label>Category:</label>
+        <select [(ngModel)]="split.category" name="category{{i}}" required>
+          <option value="" disabled>Select category</option>
+          <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+        </select>
+        <label>Subcategory:</label>
+        <select [(ngModel)]="split.subcategory" name="subcategory{{i}}" [disabled]="!split.category">
+          <option value="" disabled>Select subcategory</option>
+          <option *ngFor="let sub of subcategoriesMap[split.category] || []" [value]="sub">{{sub}}</option>
+        </select>
+        <label>Amount:</label>
+        <input type="number" [(ngModel)]="split.amount" name="amount{{i}}" required min="0" />
+        <button type="button" (click)="removeSplit(i)" *ngIf="splits.length > 2">Remove</button>
+      </div>
+    <button type="button" class="add-split-btn" (click)="addSplit()">Add Split</button>
+      <div class="popup-actions">
+        <button type="submit" [disabled]="!isAmountValid()">Apply</button>
+        <button type="button" (click)="close.emit()">Cancel</button>
+      </div>
+      <div *ngIf="!isAmountValid()" class="error-msg">
+        Sum of split amounts must be equal to original transaction amount ({{ transaction.amount }}).
+      </div>
+    </form>
+  </div>
+</div>
