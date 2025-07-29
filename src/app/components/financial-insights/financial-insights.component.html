@@ -36,10 +36,15 @@
 <div class="choose-view-panel">
   <div class="choose-view">
     <span class="choose-label">Choose View:</span>
-    <span class="material-icons choose-icon">list</span>
-    <span class="material-icons choose-icon">grid_view</span>
-    <span class="material-icons choose-icon">pie_chart</span>
-    <span class="material-icons choose-icon">bubble_chart</span>
-    <span class="material-icons choose-icon">bar_chart</span>
+    <span class="material-icons choose-icon" (click)="onChooseView('list')">list</span>
+    <span class="material-icons choose-icon" (click)="onChooseView('treemap')">view_quilt</span>
+    <span class="material-icons choose-icon" (click)="onChooseView('pie')">pie_chart</span>
+    <span class="material-icons choose-icon" (click)="onChooseView('bubble')">bubble_chart</span>
+    <span class="material-icons choose-icon" (click)="onChooseView('bar')">bar_chart</span>
   </div>
 </div>
+
+<app-spending-treemap
+  *ngIf="showTreemap"
+  [transactions]="filteredSortedTransactions">
+</app-spending-treemap>
